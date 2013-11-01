@@ -1,6 +1,6 @@
 <?php
 
-namespace Tzi\Blog\Stack\Model;
+namespace Blogartiq\Stack\Model;
 
 class Article extends Article\__Parent
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tzi\Blog;
+namespace Blogartiq;
 
 class RSSWriter
 {

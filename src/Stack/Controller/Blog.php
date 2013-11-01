@@ -1,6 +1,6 @@
 <?php
 
-namespace Tzi\Blog\Stack\Controller;
+namespace Blogartiq\Stack\Controller;
 
 class Blog extends Blog\__Parent
 {
@@ -32,7 +32,7 @@ class Blog extends Blog\__Parent
             $items[] = $item;
         }
 
-        $RSS = new \Tzi\Blog\RSSWriter();
+        $RSS = new \Blogartiq\RSSWriter();
         $RSS->title = $setting['title'];
         $RSS->description = $setting['description'];
         $RSS->siteURL = 'http://' . $_SERVER['SERVER_NAME'] . \Staq\Util::getControllerUrl($this, 'home');
