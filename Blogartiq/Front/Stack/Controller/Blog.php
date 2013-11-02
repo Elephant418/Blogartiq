@@ -34,7 +34,7 @@ class Blog extends Blog\__Parent
             $items[] = $item;
         }
 
-        $RSS = new \Blogartiq\RSSWriter();
+        $RSS = new \Blogartiq\Front\RSSWriter();
         $RSS->title = $setting['title'];
         $RSS->description = $setting['description'];
         $RSS->siteURL = 'http://' . $_SERVER['SERVER_NAME'] . \Staq\Util::getControllerUrl($this, 'home');
@@ -81,7 +81,7 @@ class Blog extends Blog\__Parent
         $articles = (new \Stack\Entity\Article)->fetchAll();
         $current = time();
         foreach ($articles as $key => $article) {
-            if (! $article->date || $article->dateTime > $current) {
+            if (! $article->date || $article->date->getTimestamp() > $current) {
                 unset($articles[$key]);
             }
         }
