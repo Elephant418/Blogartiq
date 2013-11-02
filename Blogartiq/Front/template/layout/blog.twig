@@ -40,7 +40,7 @@
                     <ul class="header-menu">
                         {% for page in pages %}
                             {% set href = public(page.id) %}
-                            {% if page.id == 'index' %}
+                            {% if page.id == 'home' %}
                                 {% set href = route('Blog', 'home') %}
                             {% endif %}
                             <li class="header-menuItem"><a href="{{ href }}">{{ page.label }}</a></li>
