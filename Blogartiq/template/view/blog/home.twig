@@ -1,0 +1,21 @@
+{% extends "layout/index.twig" %}
+
+{% block title %}{{ home.title }}{% endblock %}
+
+{% block content %}
+    <h1 class="content-title">{{ home.title }}</h1>
+
+    {% autoescape false %}
+        {{ home.content }}
+    {% endautoescape %}
+
+    <ul class="content-articleList">
+        {% for article in articles %}
+            <li>
+                <a href="{{ public(article.id) }}" class="content-articleLink">{{ article.title }}</a>
+                &ndash;
+                <span class="content-articleDate">{{ article.date }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

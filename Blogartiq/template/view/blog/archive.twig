@@ -1,0 +1,26 @@
+{% extends "layout/index.twig" %}
+
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+    <h1 class="content-title">Articles</h1>
+    {% for section in articles %}
+        <h2 id="{{ section.id }}">
+            <a href="#{{ section.id }}">{{ section.name }}</a>
+        </h2>
+        {% for subsection in section.subsections %}
+            <h3 id="{{ section.id }}-{{ subsection.id }}">
+                <a href="#{{ section.id }}-{{ subsection.id }}">{{ subsection.name }}</a>
+            </h3>
+            <ul class="content-articleList">
+                {% for article in subsection.articles %}
+                    <li>
+                        <a href="{{ public(article.id) }}" class="content-articleLink">
+                            {{ article.title }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

@@ -7,6 +7,7 @@ class Blog extends Blog\__Parent
 
     public function actionHome() {
         $view = new \Stack\View\Blog\Home();
+        $view['home'] = (new \Stack\Entity\Page)->fetchById('index');
         $view['articles'] = $this->getLastArticles();
         return $view;
     }

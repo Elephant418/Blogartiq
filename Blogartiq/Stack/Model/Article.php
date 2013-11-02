@@ -25,14 +25,16 @@ class Article extends Article\__Parent
         $this->dateTime = strtotime($this->date)+8*60*60;
 
         /* Id */
-        $this->section = \UString::substrBefore($this->id, '/');
-        $this->subsection = \UString::substrBeforeLast( \UString::substrAfter($this->id, '/'), '/');
-        $this->shortTitle = \UString::substrAfterLast($this->id, '/');
+        if (substr_count($this->id, '/') == 2) {
+            $this->section = \UString::substrBefore($this->id, '/');
+            $this->subsection = \UString::substrBeforeLast( \UString::substrAfter($this->id, '/'), '/');
+            $this->shortTitle = \UString::substrAfterLast($this->id, '/');
+        }
 
         /* Retreat content */
         if (trim($this->content)) {
             $doc = new \DOMDocument();
-            $doc->loadHTML($this->content);
+            $doc->loadHTML('<?xml encoding="UTF-8">' . $this->content);
 
             /* H1 */
             $h1s = $doc->getElementsByTagName('h1');
@@ -69,6 +71,10 @@ class Article extends Article\__Parent
 
             /* Content */
             $this->content = $doc->saveHTML();
+        }
+
+        if (empty($this->shortTitle)) {
+            $this->shortTitle = $this->title;
         }
 
         parent::initialize();
