@@ -27,6 +27,9 @@ html {
     text-align: center;
     padding-bottom: 1em;
 }
+.header-logo img {
+    max-width: 100%;
+}
 .header-menu {
     text-align: center;
     list-style: none;
@@ -53,6 +56,19 @@ html {
     border: 1px rgb(220, 90, 1) solid;
     background: rgb(128, 52, 1);
 }
+@media (max-width: 599px) {
+    .header-menu {
+        padding: 0 1em;
+    }
+    .header-menuItem {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 0.5em;
+    }
+    .header-menuItem > a {
+        display: block;
+    }
+}
 
 
 
@@ -76,4 +92,9 @@ h2 > a {
     border-top: 1px #0D0D0D solid;
     margin-top: 2em;
     padding-top: 2em;
+}
+@media (max-width: 599px) {
+    .content > .container {
+        padding: 0 1em;
+    }
 }
