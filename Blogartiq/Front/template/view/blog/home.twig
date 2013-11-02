@@ -1,0 +1,19 @@
+{% extends "layout/index.twig" %}
+
+{% block title %}{{ home.title }}{% endblock %}
+
+{% block content %}
+    <h1 class="content-title">{{ home.title }}</h1>
+
+    {% autoescape false %}
+        {{ home.content }}
+    {% endautoescape %}
+
+    <ul class="content-articleList">
+        {% for article in articles %}
+            <li>
+                {% include 'part/articleListItem.twig' %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

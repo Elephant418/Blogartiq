@@ -1,0 +1,34 @@
+{% extends "layout/index.twig" %}
+
+{% set page = content %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block meta %}
+    {{ parent() }}
+    <meta name="description" content="{{ page.intro }}">
+    <link rel="author" href="https://plus.google.com/103273842481440217381/"/>
+{% endblock %}
+
+{% block content %}
+    <h1 class="content-title">
+        {{ page.title }}
+    </h1>
+
+    {% autoescape false %}
+        {{ page.content }}
+    {% endautoescape %}
+
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    {% include 'part/disqus.twig' with {
+        'identifier': 'page-'~page.name,
+        'title': page.title
+    } %}
+{% endblock %}

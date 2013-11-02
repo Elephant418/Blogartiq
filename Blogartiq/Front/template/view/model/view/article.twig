@@ -1,0 +1,31 @@
+{% extends "layout/index.twig" %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block meta %}
+    {{ parent() }}
+    <meta name="description" content="{{ article.intro }}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="content-title">
+        {{ article.title }}
+    </h1>
+
+    {% autoescape false %}
+        {{ article.content }}
+    {% endautoescape %}
+
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    {% include 'part/disqus.twig' with {
+        'identifier': 'article-'~article.name,
+        'title': article.title
+    } %}
+{% endblock %}
