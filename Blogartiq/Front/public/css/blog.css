@@ -61,6 +61,17 @@ h2 > a {
     text-decoration: none;
     color: inherit;
 }
+.content-date {
+    font-style: italic;
+    margin-bottom: -1.33em;
+    margin-top: 1.33em;
+}
+.content-articleList > li {
+    margin-bottom: 0.5em;
+}
+.content-articleDate {
+    font-style: italic;
+}
 #disqus_thread {
     border-top: 1px #0D0D0D solid;
     margin-top: 2em;

@@ -8,6 +8,10 @@
 {% endblock %}
 
 {% block content %}
+
+    <div class="content-date">
+        {{ article.date|formatDate }}
+    </div>
     <h1 class="content-title">
         {{ article.title }}
     </h1>

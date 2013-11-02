@@ -15,9 +15,7 @@
             <ul class="content-articleList">
                 {% for article in subsection.articles %}
                     <li>
-                        <a href="{{ public(article.id) }}" class="content-articleLink">
-                            {{ article.title }}
-                        </a>
+                        {% include 'part/articleListItem.twig' %}
                     </li>
                 {% endfor %}
             </ul>

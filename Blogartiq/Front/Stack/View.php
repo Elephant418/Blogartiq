@@ -11,6 +11,17 @@ class View extends View\__Parent
 
     /* OVERRIDABLE METHODS
      *************************************************************************/
+    protected function extendTwig()
+    {
+        parent::extendTwig();
+
+        $formatDateFilter = new \Twig_SimpleFilter('formatDate', function(\DateTime $date) {
+            $time = $date->getTimestamp();
+            return date('n-j-Y', $time);
+        });
+        $this->twig->addFilter($formatDateFilter);
+    }
+
     protected function addVariables()
     {
         $this['blog'] = (new \Stack\Setting)->parse('Blog');
