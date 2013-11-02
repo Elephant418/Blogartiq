@@ -28,7 +28,7 @@ class Blog extends Blog\__Parent
             $item = [];
             $item['title'] = $article->title;
             $item['url'] = 'http://' . $_SERVER['SERVER_NAME'] . \Staq\Util::getPublicUrl($article->id);
-            $item['date'] = date('r', $article->date);
+            $item['date'] = date('r', $article->date->getTimestamp());
             $item['intro'] = $article->intro;
             $item['author'] = $setting['author'];
             $items[] = $item;
