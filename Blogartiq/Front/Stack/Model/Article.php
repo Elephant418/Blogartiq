@@ -12,7 +12,6 @@ class Article extends Article\__Parent
     public $subsection;
     public $shortTitle;
 
-    public $title;
     public $summary = [];
     public $intro;
 
