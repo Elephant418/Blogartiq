@@ -6,6 +6,11 @@
 html {
     line-height: 1.5;
 }
+a {
+    color: rgb(220, 90, 1);
+}
+
+
 
 /* LAYOUT */
 .header {
@@ -81,12 +86,17 @@ h2 > a {
     font-style: italic;
     margin-bottom: -1.33em;
     margin-top: 1.33em;
+    color: #999;
 }
 .content-articleList > li {
     margin-bottom: 0.5em;
 }
-.content-articleDate {
+.content-articleListDate {
     font-style: italic;
+}
+.content-author {
+    text-align: right;
+    color: #999;
 }
 #disqus_thread {
     border-top: 1px #0D0D0D solid;

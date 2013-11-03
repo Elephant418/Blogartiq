@@ -19,15 +19,12 @@
         {{ page.content }}
     {% endautoescape %}
 
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    {% include 'part/disqus/thread.twig' %}
 {% endblock %}
 
 {% block scripts %}
     {{ parent() }}
-    {% include 'part/disqus.twig' with {
+    {% include 'part/disqus/script.twig' with {
         'identifier': 'page-'~page.name,
         'title': page.title
     } %}
