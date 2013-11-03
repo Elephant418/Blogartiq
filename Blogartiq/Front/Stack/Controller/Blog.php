@@ -26,7 +26,7 @@ class Blog extends Blog\__Parent
         $items = [];
         foreach ($this->getLastArticles() as $article) {
             $item = [];
-            $item['title'] = $article->title;
+            $item['title'] = $article->label;
             $item['url'] = 'http://' . $_SERVER['SERVER_NAME'] . \Staq\Util::getPublicUrl($article->id);
             $item['date'] = date('r', $article->date->getTimestamp());
             $item['intro'] = $article->intro;
