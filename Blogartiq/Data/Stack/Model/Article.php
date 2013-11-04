@@ -20,7 +20,7 @@ class Article extends Article\__Parent
         /* Retreat content */
         if (trim($this->content)) {
             $doc = new \DOMDocument();
-            $doc->loadHTML('<?xml encoding="UTF-8">' . $this->content);
+            @$doc->loadHTML('<?xml encoding="UTF-8">' . $this->content);
 
             /* H1 */
             $h1s = $doc->getElementsByTagName('h1');
