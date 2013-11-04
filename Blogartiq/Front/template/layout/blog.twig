@@ -26,9 +26,6 @@
 </head>
 <body>
     {% block body %}
-        {% for notification in UINotification %}
-            {% include 'part/alert-message.twig' with notification only %}
-        {% endfor %}
         <div class="page">
             <div class="header">
                 <div class="container">
@@ -52,6 +49,8 @@
             </div>
             <div class="content">
                 <div class="container">
+                    {% block precontent %}
+                    {% endblock %}
                     {% block content %}
                     {% endblock %}
                 </div>
