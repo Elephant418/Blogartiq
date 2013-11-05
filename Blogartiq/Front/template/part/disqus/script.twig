@@ -1,3 +1,4 @@
+{% if blog.disqus.enable %}
 <script type="text/javascript">
     var disqus_shortname = '{{ blog.disqus.shortname }}';
     var disqus_identifier = '{{ blog.disqus.identifierPrefix }}{{ identifier }}';
@@ -14,3 +15,4 @@
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
 </script>
+{% endif %}
