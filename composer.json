@@ -8,12 +8,13 @@
     "authors": [
         {
             "name": "Thomas ZILLIOX",
-            "homepage": "http://zilliox.me",
+            "homepage": "http://tzi.fr",
             "role": "Developer"
         }
     ],
     "require": {
         "pixel418/staq": "dev-develop",
+        "pixel418/feedify": "dev-master",
         "php": ">=5.4.0"
     },
     "autoload": {

@@ -23,7 +23,7 @@ class Blog extends Blog\__Parent
             ->parse('Blog')
             ->get('rss');
 
-        $RSS = new \Blogartiq\Front\Feedify();
+        $RSS = new \Feedify\Writer();
         $RSS->title = $setting['title'];
         $RSS->description = $setting['description'];
         $RSS->siteURL = 'http://' . $_SERVER['SERVER_NAME'] . \Staq\Util::getControllerUrl($this, 'home');
@@ -42,7 +42,7 @@ class Blog extends Blog\__Parent
     }
 
     public function actionSiteMap() {
-        $siteMap = new \Blogartiq\Front\Feedify();
+        $siteMap = new \Feedify\Writer();
         $siteMap->addItems($this->getAllPages());
         $siteMap->addItems(array(array('url'=>'http://' . $_SERVER['SERVER_NAME'] . \Staq\Util::getControllerUrl($this, 'archive'))));
         $siteMap->addItems($this->getAllArticles());
@@ -57,7 +57,7 @@ class Blog extends Blog\__Parent
             }
         });
         $siteMap->addAttribute('date');
-        $siteMap->output(\Blogartiq\Front\Feedify::SITEMAP_FORMAT);
+        $siteMap->output(\Feedify\Writer::SITEMAP_FORMAT);
 
         return TRUE;
     }
