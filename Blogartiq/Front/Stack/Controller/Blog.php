@@ -6,9 +6,12 @@ class Blog extends Blog\__Parent
 {
 
     public function actionHome() {
+        $setting = (new \Stack\Setting)
+            ->parse('Blog')
+            ->get('home');
         $view = new \Stack\View\Blog\Home();
         $view['home'] = (new \Stack\Entity\Page)->fetchById('home');
-        $view['articles'] = $this->getLastArticles();
+        $view['articles'] = $this->getLastArticles($setting['limit']);
         return $view;
     }
 
