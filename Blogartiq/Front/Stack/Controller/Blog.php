@@ -5,10 +5,12 @@ namespace Blogartiq\Front\Stack\Controller;
 class Blog extends Blog\__Parent
 {
 
+    protected $articleOnHome = 10;
+
     public function actionHome() {
         $view = new \Stack\View\Blog\Home();
         $view['home'] = (new \Stack\Entity\Page)->fetchById('home');
-        $view['articles'] = $this->getLastArticles();
+        $view['articles'] = $this->getLastArticles($this->articleOnHome);
         return $view;
     }
 
@@ -27,7 +29,7 @@ class Blog extends Blog\__Parent
         foreach ($this->getLastArticles() as $article) {
             $item = [];
             $item['title'] = $article->label;
-            $item['url'] = 'http://' . $_SERVER['SERVER_NAME'] . \Staq\Util::getPublicUrl($article->id);
+            $item['url'] = 'http://' . $_SERVER['SERVER_NAME'] . \Staq\Util::getControllerUrl('Model\Article', 'view', $article->id);
             $item['date'] = date('r', $article->date->getTimestamp());
             $item['intro'] = $article->intro;
             $item['author'] = $setting['author'];
