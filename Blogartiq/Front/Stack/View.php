@@ -16,8 +16,7 @@ class View extends View\__Parent
         parent::extendTwig();
 
         $formatDateFilter = new \Twig_SimpleFilter('formatDate', function(\DateTime $date) {
-            $time = $date->getTimestamp();
-            return date('n-j-Y', $time);
+            return $date->format('n-j-Y');
         });
         $this->twig->addFilter($formatDateFilter);
     }
