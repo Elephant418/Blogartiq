@@ -63,7 +63,10 @@ class Article extends Article\__Parent
             /* Intro */
             $ps = $doc->getElementsByTagName('p');
             if ($ps->length) {
-                $this->intro = $ps->item(0)->textContent;
+                $firstP = $ps->item(0);
+                $this->intro = $firstP->textContent;
+                $this->introHTML = $doc->saveHTML($firstP);
+                $firstP->parentNode->removeChild($firstP);
             }
 
             /* Content */
