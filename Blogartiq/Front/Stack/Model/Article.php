@@ -14,6 +14,7 @@ class Article extends Article\__Parent
 
     public $summary = [];
     public $intro;
+    public $image;
 
 
     /* CONSTRUCTOR
@@ -34,17 +35,17 @@ class Article extends Article\__Parent
             @$doc->loadHTML('<?xml encoding="UTF-8">' . $this->content);
 
             /* H1 */
-            $h1s = $doc->getElementsByTagName('h1');
-            if ($h1s->length) {
-                $this->title = $h1s->item(0)->textContent;
+            $h1List = $doc->getElementsByTagName('h1');
+            if ($h1List->length) {
+                $this->title = $h1List->item(0)->textContent;
             }
-            foreach($h1s as $h1) {
+            foreach($h1List as $h1) {
                 $h1->parentNode->removeChild($h1);
             }
 
             /* H2 */
-            $h2s = $doc->getElementsByTagName('h2');
-            foreach($h2s as $h2) {
+            $h2List = $doc->getElementsByTagName('h2');
+            foreach($h2List as $h2) {
                 $title = $h2->textContent;
                 if ($h2->hasAttribute('id')) {
                     $id = $h2->getAttribute('id');
@@ -58,6 +59,15 @@ class Article extends Article\__Parent
                 $link->nodeValue = htmlentities($title);
                 $link->setAttribute('href', '#'.$id);
                 $h2->appendChild($link);
+            }
+
+            /* Image */
+            $imageList = $doc->getElementsByTagName('img');
+            if ($imageList->length) {
+                $image = $imageList->item(0);
+                if ($image->hasAttribute('src')) {
+                    $this->image = $image->getAttribute('src');
+                }
             }
 
             /* Intro */

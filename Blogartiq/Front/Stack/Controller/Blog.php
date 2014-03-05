@@ -102,7 +102,7 @@ class Blog extends Blog\__Parent
         $articles = (new \Stack\Entity\Article)->fetchAll();
         $current = time();
         foreach ($articles as $key => $article) {
-            if (! $article->date || $article->date->getTimestamp() > $current) {
+            if (! $article->getAttribute('date')->is_set() || $article->date->getTimestamp() > $current) {
                 unset($articles[$key]);
             }
         }
