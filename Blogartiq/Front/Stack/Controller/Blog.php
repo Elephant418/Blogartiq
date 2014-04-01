@@ -49,14 +49,17 @@ class Blog extends Blog\__Parent
         $siteMap->addItems($this->getAllPages());
         $siteMap->addItems(array(array('url'=>'http://' . $_SERVER['SERVER_NAME'] . \Staq\Util::getControllerUrl($this, 'archive'))));
         $siteMap->addItems($this->getAllArticles());
-        $siteMap->addAttributeFormatter('url', function($article){
-            if (isset($article->id)) {
-                $path = $article->id;
-                if ($path=='index') $path = '';
+        $siteMap->addAttributeFormatter('url', function($item){
+            if ((new \Stack\Model\Article)->is($item)) {
+                return 'http://' . $_SERVER['SERVER_NAME'] . \Staq\Util::getModelControllerUrl($item);
+            }
+            if (isset($item->id)) {
+                $path = $item->id;
+                if ($path=='home') $path = '';
                 return 'http://' . $_SERVER['SERVER_NAME'] . \Staq\Util::getPublicUrl($path);
             }
-            if (isset($article['url'])) {
-                return $article['url'];
+            if (isset($item['url'])) {
+                return $item['url'];
             }
         });
         $siteMap->addAttribute('date');
