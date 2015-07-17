@@ -82,11 +82,10 @@ class Blog extends Blog\__Parent
 
     protected function getGroupedArticles() {
         $articles = $this->getAllArticles();
+        usort($articles, function($a, $b){
+            return $b->date->getTimestamp() - $a->date->getTimestamp();
+        });
         $articles = $this->groupArticles($articles, 'section');
-        foreach (array_keys($articles) as $section) {
-            $articles[$section]['subsections'] = $this->groupArticles($articles[$section]['articles'], 'subsection');
-            unset($articles[$section]['articles']);
-        }
         return $articles;
     }
 

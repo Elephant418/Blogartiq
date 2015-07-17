@@ -16,6 +16,7 @@ class Article extends Article\__Parent
         }
 
         $view = $this->createView();
+        $view['content'] = $article;
         $view['article'] = $article;
         return $view;
     }
